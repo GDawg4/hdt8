@@ -1,11 +1,11 @@
 import java.io.*;
 import java.nio.charset.Charset;
+import java.util.PriorityQueue;
 
-public class Main {
-
-    private static VectorHeap<Person> mainHeap = new VectorHeap<>();
-
+public class MainWIthJCF {
     public static void main(String[] args){
+        PriorityQueue<Person> preMadeQueue = new PriorityQueue<>();
+
         String fileName = "C:\\Users\\garoz\\Desktop\\2019\\Estructura de datos\\hdt8\\src\\pacientes.txt";
         File file = new File(fileName);
         FileInputStream fis;
@@ -17,7 +17,7 @@ public class Main {
             while((line = br.readLine()) != null){
                 String[] elements = line.split(",");
                 Person newPatient = new Person(elements[0], elements[1], elements[2].replace(" ", ""));
-                mainHeap.add(newPatient);
+                preMadeQueue.add(newPatient);
             }
             br.close();
         }catch (FileNotFoundException e){
@@ -26,10 +26,10 @@ public class Main {
         }catch (IOException e){
             System.out.println("Something else went wrong");
         }
-        System.out.println("This is hand made");
-        while(!mainHeap.isEmpty()){
-            System.out.println(mainHeap.getFirst().name);
-            mainHeap.remove();
+        System.out.println("This is pre made");
+        while(!preMadeQueue.isEmpty()){
+            System.out.println(preMadeQueue.peek().name);
+            preMadeQueue.remove();
         }
     }
 }
