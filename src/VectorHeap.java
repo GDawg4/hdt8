@@ -5,6 +5,7 @@ import java.util.Vector;
  *
  * @param <E> the type parameter
  */
+//Tomado de libro JavaStructures
 public class VectorHeap<E extends Comparable> implements PriorityQueue<E> {
     /**
      * Data, stores all the patients
